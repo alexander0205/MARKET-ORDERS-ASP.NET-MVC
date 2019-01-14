@@ -40,4 +40,9 @@ Using the Entity Framework, create a model (edmx) that contains the database cre
 Create an Orders page, which allows you to select a customer and add any (n) quantity of products to the order.
 In the list of products, I must show the remaining amount of the product.
 When the order is saved, the products must be deducted from the quantity field, and if at the time of saving, the quantity is 0, I must issue an alert and prevent the creation of the order.
-BONUS: Use any CSS template of https://templated.co/
+
+
+
+![alt text](https://raw.githubusercontent.com/alexander0205/MARKET-ORDERS-C--MVC/master/Capture.PNG)
+![alt text](https://raw.githubusercontent.com/alexander0205/MARKET-ORDERS-C--MVC/master/3.PNG)
+![alt text](https://raw.githubusercontent.com/alexander0205/MARKET-ORDERS-C--MVC/master/Capture2.PNG)
