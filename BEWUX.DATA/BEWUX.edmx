@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BEWUX_AFERRERASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido" Type="varchar" MaxLength="50" />
+          <Property Name="direccion" Type="text" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="fecha_creacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="orden_detalle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_orden" Type="int" Nullable="false" />
+          <Property Name="id_producto" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orden_maestro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_cliente" Type="int" Nullable="false" />
+          <Property Name="fecha_creada" Type="datetime" />
+          <Property Name="estados" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
+          <Property Name="precio" Type="decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <Association Name="FK_orden_detalle_orden_maestro">
+          <End Role="orden_maestro" Type="Self.orden_maestro" Multiplicity="1" />
+          <End Role="orden_detalle" Type="Self.orden_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orden_maestro">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orden_detalle">
+              <PropertyRef Name="id_orden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orden_detalle_productos">
+          <End Role="productos" Type="Self.productos" Multiplicity="1" />
+          <End Role="orden_detalle" Type="Self.orden_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orden_detalle">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orden_maestro_clientes">
+          <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+          <End Role="orden_maestro" Type="Self.orden_maestro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orden_maestro">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BEWUX_AFERRERASModelStoreContainer">
+          <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orden_detalle" EntityType="Self.orden_detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orden_maestro" EntityType="Self.orden_maestro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="productos" EntityType="Self.productos" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_orden_detalle_orden_maestro" Association="Self.FK_orden_detalle_orden_maestro">
+            <End Role="orden_maestro" EntitySet="orden_maestro" />
+            <End Role="orden_detalle" EntitySet="orden_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orden_detalle_productos" Association="Self.FK_orden_detalle_productos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="orden_detalle" EntitySet="orden_detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orden_maestro_clientes" Association="Self.FK_orden_maestro_clientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="orden_maestro" EntitySet="orden_maestro" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BEWUX_AFERRERASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BEWUX_AFERRERASEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="clientes" EntityType="BEWUX_AFERRERASModel.clientes" />
+          <EntitySet Name="orden_detalle" EntityType="BEWUX_AFERRERASModel.orden_detalle" />
+          <EntitySet Name="productos" EntityType="BEWUX_AFERRERASModel.productos" />
+          <AssociationSet Name="FK_orden_detalle_productos" Association="BEWUX_AFERRERASModel.FK_orden_detalle_productos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="orden_detalle" EntitySet="orden_detalle" />
+          </AssociationSet>
+          <EntitySet Name="orden_maestro" EntityType="BEWUX_AFERRERASModel.orden_maestro" />
+          <AssociationSet Name="FK_orden_maestro_clientes" Association="BEWUX_AFERRERASModel.FK_orden_maestro_clientes">
+            <End Role="clientes" EntitySet="clientes" />
+            <End Role="orden_maestro" EntitySet="orden_maestro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orden_detalle_orden_maestro" Association="BEWUX_AFERRERASModel.FK_orden_detalle_orden_maestro">
+            <End Role="orden_maestro" EntitySet="orden_maestro" />
+            <End Role="orden_detalle" EntitySet="orden_detalle" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="direccion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="activo" Type="Boolean" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="orden_maestro" Relationship="BEWUX_AFERRERASModel.FK_orden_maestro_clientes" FromRole="clientes" ToRole="orden_maestro" />
+        </EntityType>
+        <EntityType Name="orden_detalle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_orden" Type="Int32" Nullable="false" />
+          <Property Name="id_producto" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="precio" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="productos" Relationship="BEWUX_AFERRERASModel.FK_orden_detalle_productos" FromRole="orden_detalle" ToRole="productos" />
+          <NavigationProperty Name="orden_maestro" Relationship="BEWUX_AFERRERASModel.FK_orden_detalle_orden_maestro" FromRole="orden_detalle" ToRole="orden_maestro" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <Property Name="precio" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="orden_detalle" Relationship="BEWUX_AFERRERASModel.FK_orden_detalle_productos" FromRole="productos" ToRole="orden_detalle" />
+        </EntityType>
+        <Association Name="FK_orden_detalle_productos">
+          <End Type="BEWUX_AFERRERASModel.productos" Role="productos" Multiplicity="1" />
+          <End Type="BEWUX_AFERRERASModel.orden_detalle" Role="orden_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orden_detalle">
+              <PropertyRef Name="id_producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="orden_maestro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_cliente" Type="Int32" Nullable="false" />
+          <Property Name="fecha_creada" Type="DateTime" Precision="3" />
+          <Property Name="estados" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="clientes" Relationship="BEWUX_AFERRERASModel.FK_orden_maestro_clientes" FromRole="orden_maestro" ToRole="clientes" />
+          <NavigationProperty Name="orden_detalle" Relationship="BEWUX_AFERRERASModel.FK_orden_detalle_orden_maestro" FromRole="orden_maestro" ToRole="orden_detalle" />
+        </EntityType>
+        <Association Name="FK_orden_maestro_clientes">
+          <End Type="BEWUX_AFERRERASModel.clientes" Role="clientes" Multiplicity="1" />
+          <End Type="BEWUX_AFERRERASModel.orden_maestro" Role="orden_maestro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clientes">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orden_maestro">
+              <PropertyRef Name="id_cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orden_detalle_orden_maestro">
+          <End Type="BEWUX_AFERRERASModel.orden_maestro" Role="orden_maestro" Multiplicity="1" />
+          <End Type="BEWUX_AFERRERASModel.orden_detalle" Role="orden_detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orden_maestro">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="orden_detalle">
+              <PropertyRef Name="id_orden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BEWUX_AFERRERASModelStoreContainer" CdmEntityContainer="BEWUX_AFERRERASEntities" >
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="BEWUX_AFERRERASModel.clientes">
+              <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orden_detalle">
+            <EntityTypeMapping TypeName="BEWUX_AFERRERASModel.orden_detalle">
+              <MappingFragment StoreEntitySet="orden_detalle">
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+                <ScalarProperty Name="id_orden" ColumnName="id_orden" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productos">
+            <EntityTypeMapping TypeName="BEWUX_AFERRERASModel.productos">
+              <MappingFragment StoreEntitySet="productos">
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orden_maestro">
+            <EntityTypeMapping TypeName="BEWUX_AFERRERASModel.orden_maestro">
+              <MappingFragment StoreEntitySet="orden_maestro">
+                <ScalarProperty Name="estados" ColumnName="estados" />
+                <ScalarProperty Name="fecha_creada" ColumnName="fecha_creada" />
+                <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

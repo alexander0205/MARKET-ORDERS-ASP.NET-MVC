@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BEWUX.APP", "BEWUX.APP\BEWUX.APP.csproj", "{F40E90C1-5A12-40AA-ACF3-6B541EDF6AA3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BEWUX.DATA", "BEWUX.DATA\BEWUX.DATA.csproj", "{F52EE6C0-52C8-4CA6-9AEC-BB880E90E187}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F40E90C1-5A12-40AA-ACF3-6B541EDF6AA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F40E90C1-5A12-40AA-ACF3-6B541EDF6AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F40E90C1-5A12-40AA-ACF3-6B541EDF6AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F40E90C1-5A12-40AA-ACF3-6B541EDF6AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F52EE6C0-52C8-4CA6-9AEC-BB880E90E187}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F52EE6C0-52C8-4CA6-9AEC-BB880E90E187}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F52EE6C0-52C8-4CA6-9AEC-BB880E90E187}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F52EE6C0-52C8-4CA6-9AEC-BB880E90E187}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9429689C-A957-46F8-B519-BD4B0418A907}
+	EndGlobalSection
+EndGlobal

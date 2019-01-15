@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BEWUX_AFERRERASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="clientes">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="apellido" Type="varchar" MaxLength="50" />
+    <Property Name="direccion" Type="text" />
+    <Property Name="activo" Type="bit" />
+    <Property Name="fecha_creacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="orden_detalle">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_orden" Type="int" Nullable="false" />
+    <Property Name="id_producto" Type="int" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="orden_maestro">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_cliente" Type="int" Nullable="false" />
+    <Property Name="fecha_creada" Type="datetime" />
+    <Property Name="estados" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="productos">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="cantidad" Type="int" />
+    <Property Name="precio" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="FK_orden_detalle_orden_maestro">
+    <End Role="orden_maestro" Type="Self.orden_maestro" Multiplicity="1" />
+    <End Role="orden_detalle" Type="Self.orden_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="orden_maestro">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orden_detalle">
+        <PropertyRef Name="id_orden" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orden_detalle_productos">
+    <End Role="productos" Type="Self.productos" Multiplicity="1" />
+    <End Role="orden_detalle" Type="Self.orden_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orden_detalle">
+        <PropertyRef Name="id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_orden_maestro_clientes">
+    <End Role="clientes" Type="Self.clientes" Multiplicity="1" />
+    <End Role="orden_maestro" Type="Self.orden_maestro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="clientes">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="orden_maestro">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BEWUX_AFERRERASModelStoreContainer">
+    <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orden_detalle" EntityType="Self.orden_detalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orden_maestro" EntityType="Self.orden_maestro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="productos" EntityType="Self.productos" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_orden_detalle_orden_maestro" Association="Self.FK_orden_detalle_orden_maestro">
+      <End Role="orden_maestro" EntitySet="orden_maestro" />
+      <End Role="orden_detalle" EntitySet="orden_detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orden_detalle_productos" Association="Self.FK_orden_detalle_productos">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="orden_detalle" EntitySet="orden_detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_orden_maestro_clientes" Association="Self.FK_orden_maestro_clientes">
+      <End Role="clientes" EntitySet="clientes" />
+      <End Role="orden_maestro" EntitySet="orden_maestro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

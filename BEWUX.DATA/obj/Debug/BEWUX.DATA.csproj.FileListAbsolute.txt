@@ -1,0 +1,12 @@
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\bin\Debug\BEWUX.DATA.dll.config
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\bin\Debug\BEWUX.DATA.dll
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\bin\Debug\BEWUX.DATA.pdb
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\bin\Debug\EntityFramework.dll
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\bin\Debug\EntityFramework.xml
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\obj\Debug\BEWUX.DATA.csproj.CoreCompileInputs.cache
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\obj\Debug\BEWUX.DATA.csproj.CopyComplete
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\obj\Debug\BEWUX.DATA.dll
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\obj\Debug\BEWUX.DATA.pdb
+C:\Users\aferreras\source\repos\BEWUX_APP_FERRERAS\BEWUX.DATA\obj\Debug\BEWUX.DATA.csprojAssemblyReference.cache

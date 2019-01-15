@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BEWUX_AFERRERASModelStoreContainer" CdmEntityContainer="BEWUX_AFERRERASEntities">
+    <EntitySetMapping Name="clientes">
+      <EntityTypeMapping TypeName="BEWUX_AFERRERASModel.clientes">
+        <MappingFragment StoreEntitySet="clientes">
+          <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+          <ScalarProperty Name="activo" ColumnName="activo" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="apellido" ColumnName="apellido" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orden_detalle">
+      <EntityTypeMapping TypeName="BEWUX_AFERRERASModel.orden_detalle">
+        <MappingFragment StoreEntitySet="orden_detalle">
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="id_orden" ColumnName="id_orden" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productos">
+      <EntityTypeMapping TypeName="BEWUX_AFERRERASModel.productos">
+        <MappingFragment StoreEntitySet="productos">
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orden_maestro">
+      <EntityTypeMapping TypeName="BEWUX_AFERRERASModel.orden_maestro">
+        <MappingFragment StoreEntitySet="orden_maestro">
+          <ScalarProperty Name="estados" ColumnName="estados" />
+          <ScalarProperty Name="fecha_creada" ColumnName="fecha_creada" />
+          <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
