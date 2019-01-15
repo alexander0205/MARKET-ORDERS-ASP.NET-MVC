@@ -1,6 +1,9 @@
 # Take orders ASP.NET MVC C#
 Was a technical  test for a application in ASP.NET MVC implements goods practice 
 
+When you open the project, go to references and install all package new.
+
+
 
 Step 1:
 Create a database in MS SQL Server with the following 4 tables and their relationships
