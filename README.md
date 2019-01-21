@@ -46,6 +46,6 @@ When the order is saved, the products must be deducted from the quantity field, 
 
 
 
-![alt text](https://raw.githubusercontent.com/alexander0205/MARKET-ORDERS-C--MVC/master/Capture.PNG)
-![alt text](https://raw.githubusercontent.com/alexander0205/MARKET-ORDERS-C--MVC/master/3.PNG)
-![alt text](https://raw.githubusercontent.com/alexander0205/MARKET-ORDERS-C--MVC/master/Capture2.PNG)
+![alt text](https://raw.githubusercontent.com/alexander0205/MARKET-ORDERS-ASP.NET-MVC/master/Capture.PNG)
+![alt text](https://raw.githubusercontent.com/alexander0205/MARKET-ORDERS-ASP.NET-MVC/master/3.PNG)
+![alt text](https://raw.githubusercontent.com/alexander0205/MARKET-ORDERS-ASP.NET-MVC/master/Capture2.PNG)
